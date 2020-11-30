@@ -1,0 +1,28 @@
+Задание 1
+./background.sh > backgroundText.txt
+cat backgroundText.txt | wc -m
+67
+clear
+
+
+Задание 2
+cat cake_rhymes.txt | grep -i "cake" > with_cake.txt
+ rm test.txt > /dev/null
+
+ Задание 3
+ chmod u+x ./hello.sh
+./hello.sh
+Hello, world!
+
+chmod u+x ./Script.sh
+./Script.sh
+/projects/.theia/os_lab_2019/lab1/src
+Mon Nov 30 10:27:15 UTC 2020
+/opt/rh/llvm-toolset-9.0/root/usr/bin:/opt/rh/llvm-toolset-9.0/root/usr/sbin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+chmod  u+x ./numbers.sh
+./numbers.sh
+chmod u+x ./average.sh
+./average.sh
+Среднее значение= 126
+Число элементов= 150
