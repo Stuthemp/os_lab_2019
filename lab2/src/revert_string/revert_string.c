@@ -5,12 +5,19 @@
 
 void RevertString(char *str)
 {
-	char  *revert_string;
-    revert_string = (char*)malloc(sizeof(char) * (strlen(str) + 1));
-    for(int i =0; i < strlen(str); i++){
-        revert_string[i] = str[strlen(str)-i-1];
+	char temp;
+    int c;
+
+    scanf("%d", &c);
+
+    while (c > strlen(str)/2){
+        scanf("%d", &c);}
+
+	for(int i = 0; i < c; i++) {
+    temp=str[i];
+    str[i]=str[strlen(str)-i-1];
+    str[strlen(str)-i-1]=temp;
+    
     }
-    strcpy(str,revert_string);
-    free(revert_string);
 }
 
