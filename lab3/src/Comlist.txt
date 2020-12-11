@@ -23,3 +23,5 @@ make
 5
 make parallel_sequential
 ./parallel_sequential 34 13 
+min: 61391368
+max: 1829386774
