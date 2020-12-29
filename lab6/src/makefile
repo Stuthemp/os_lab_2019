@@ -20,4 +20,4 @@ factor.o: factorial.c factorial.h
 	$(CC) -o factor.o factorial.c $(CFLAGS) $(FPFlags)
 
 clean:
-	rm factor.o libfactor.so client server ips.md
+	rm client server ips.md

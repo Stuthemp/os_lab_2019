@@ -1,4 +1,3 @@
-#include "factorial.h"
 #include "pthread.h"
 #include <errno.h>
 #include <getopt.h>
@@ -12,6 +11,19 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+
+uint64_t MultModulo(uint64_t a, uint64_t b, uint64_t mod) {
+  uint64_t result = 0;
+  a = a % mod;
+  while (b > 0) {
+    if (b % 2 == 1)
+      result = (result + a) % mod;
+    a = (a * 2) % mod;
+    b /= 2;
+  }
+
+  return result % mod;
+}
 
 struct Server {
   char ip[255];
@@ -136,10 +148,7 @@ int main(int argc, char **argv) {
     printf("Only %llu servers will be used\n", k);
   }
   // TODO: delete this and parallel work between servers *looks like done
-  // already*
-  //   to[0].port = 20001;
-  //   memcpy(to[0].ip, "127.0.0.1", sizeof("127.0.0.1"));
-
+  
   // TODO: work continiously, rewrite to make parallel
   int ars = k / servers_num;
   int left = k % servers_num;
