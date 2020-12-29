@@ -1,5 +1,7 @@
 #include <arpa/inet.h>
+#include <getopt.h>
 #include <netinet/in.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,19 +9,23 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define BUFSIZE 100
 #define SADDR struct sockaddr
 #define SIZE sizeof(struct sockaddr_in)
 
 int main(int argc, char *argv[]) {
   int fd;
   int nread;
-  char buf[BUFSIZE];
+  int buffsize = atoi(argv[3]);
+  int size = 0;
   struct sockaddr_in servaddr;
-  if (argc < 3) {
+
+  if (argc < 4) {
     printf("Too few arguments \n");
+    printf("usage %s ip port buffsize\n", argv[0]);
     exit(1);
   }
+
+  char buf[buffsize];
 
   if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("socket creating");
@@ -42,7 +48,7 @@ int main(int argc, char *argv[]) {
   }
 
   write(1, "Input message to send\n", 22);
-  while ((nread = read(0, buf, BUFSIZE)) > 0) {
+  while ((nread = read(0, buf, buffsize)) > 1) {
     if (write(fd, buf, nread) < 0) {
       perror("write");
       exit(1);
